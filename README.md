@@ -1,6 +1,6 @@
 # Husarion
 
- Group member : Ziqin , Fredric , Dashka , Wen , Muheng , Haoqiang
+ Group member : Ziqin , Fredric , Dashnyam , Wen , Muheng , Haoqiang
 
 ### Project specification
 
