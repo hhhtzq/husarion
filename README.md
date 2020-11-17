@@ -8,6 +8,8 @@
 
 The aim of this project is to construct a wheel based robot that navigates automatically and detects position sensors. During its travel our aim is to collect the environmental data using various sensors such as CO2 sensor, dust particle sensor, temperature and humidity sensor. We also aim to visualize the measured data on a geographic map where we can use the robot position to pin the measured data to respective positions. 
 
+<img src="http://assets.processon.com/chart_image/5fb3ef31e401fd3d93e415fb.png" alt="overall" style="zoom:50%;" />
+
 | Sensors & Other components             | Type         | Datasheet                                                    |
 | -------------------------------------- | ------------ | ------------------------------------------------------------ |
 | Temperature sensor                     | S03/S04      | https://media.digikey.com/pdf/Data%20Sheets/VersaSense%20PDFs/S03_S04.pdf |
