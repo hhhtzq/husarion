@@ -4,13 +4,13 @@
 
   after the robot collect various data using sensors, then should save each sensor's data into a txt.file in real time and also visualize the measured data on a geographic map. 
 
-<img src="C:\Users\ASUS\Desktop\visualization.jpg" style="zoom: 33%;" />
+<img src="F:\husarion\visualization part\visualization.jpg" style="zoom:33%;" />
 
 ​                                                               （expected result）
 
 ##### Logic diagram 
 
-<img src="C:\Users\ASUS\Desktop\visualization2.jpg" style="zoom: 67%;" />
+<img src="F:\husarion\visualization part\visualization2.jpg" style="zoom: 50%;" />
 
 
 
