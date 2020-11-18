@@ -4,13 +4,13 @@
 
   after the robot collect various data using sensors, then should save each sensor's data into a txt.file in real time and also visualize the measured data on a geographic map. 
 
-<img src="C:\Users\ASUS\Desktop\visualization.jpg" alt="visualization" style="zoom: 33%;" />
+<img src="C:\Users\ASUS\Desktop\visualization.jpg" style="zoom: 33%;" />
 
 ​                                                               （expected result）
 
 ##### Logic diagram 
 
-<img src="C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20201118122928833.png" alt="image-20201118122928833" style="zoom: 50%;" />
+<img src="C:\Users\ASUS\Desktop\visualization2.jpg" style="zoom: 67%;" />
 
 
 
