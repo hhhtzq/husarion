@@ -15,7 +15,7 @@ The aim of this project is to construct a wheel based robot that navigates autom
 | Temperature sensor                     | S03/S04      | https://media.digikey.com/pdf/Data%20Sheets/VersaSense%20PDFs/S03_S04.pdf |
 | C02 sensor                             | K30          | https://senseair.com/products/flexibility-counts/k30/        |
 | Dust sensor                            | GP2Y1010AU0F | https://www.sparkfun.com/datasheets/Sensors/gp2y1010au_e.pdf |
-| GNSS sensor                            |              |                                                              |
+| GNSS sensor                            | GPS-15005    | https://www.sparkfun.com/products/15005                                                          |
 | USB I2C click                          | MIKROE-1985  | https://www.elfa.se/Web/Downloads/_t/ds/MIKROE-1985_eng_tds.pdf , https://www.elfa.se/Web/Downloads/_m/an/MIKROE-1985_eng_man.pdf , https://www.mikroe.com/usb-i2c-click |
 | 40-pin FPC to Breadboard adapter plate |              |                                                              |
 | A black box                            |              |                                                              |
