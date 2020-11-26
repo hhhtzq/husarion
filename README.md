@@ -34,6 +34,7 @@ The aim of this project is to construct a wheel based robot that navigates autom
 | Husarion Official WEB     | https://husarion.com/tutorials/ros-tutorials/1-ros-introduction/ |
 | Benny's page              | http://apachepersonal.miun.se/~bentho/sp/exp.htm             |
 | Google docs               | https://docs.google.com/document/d/1QWB7308pqFlYp03zOa88j0bqyZHt4ugwdaBqaO2Rk4c/edit |
+| Reference Web(Chinese)    | https://www.ncnynl.com/archives/201807/2515.html             |
 
  
 
