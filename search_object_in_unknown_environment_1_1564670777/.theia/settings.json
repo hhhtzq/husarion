@@ -1,0 +1,29 @@
+{
+  "navigator.autoReveal": true,
+  "editor.autoIndent": true,
+  "editor.tabSize": 4,
+  "editor.dragAndDrop": true,
+  "editor.renderIndentGuides": true,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "[json]": {
+    "editor.tabSize": 2
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.**": true,
+    "**/**.pyc": true,
+    "**/home/user/catkin_ws/src/CMakeLists.txt": true,
+   },
+  "files.eol": "\n",
+  "cpp.clangdArgs": "--background-index",
+  "cpp.buildConfigurations": [
+    {
+      "name": "Release",
+      "directory": "~/catkin_ws/build/"
+    },
+  ]
+}

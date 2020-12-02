@@ -1,0 +1,30 @@
+Gazebo multi-robot simulator, version 7.15.0
+Copyright (C) 2012 Open Source Robotics Foundation.
+Released under the Apache 2 License.
+http://gazebosim.org
+
+
+(1559038628 94051363) [Msg] Waiting for master.
+(1559038628 98271603) [Msg] Connected to gazebo master @ http://127.0.0.1:11345
+(1559038628 98368314) [Msg] Publicized address: 172.31.31.216
+(1559038629 418671501) [Wrn] [msgs.cc:1808] Conversion of sensor type[depth] not suppported.
+(1559038630 590092822) [Err] [Node.cc:125] No namespaces found
+(1559038631 591462220) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038632 592615186) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038633 593869944) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038634 595012126) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038635 596313232) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038636 597637358) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038637 598795038) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038638 600005813) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038639 601217138) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038640 602384886) [Wrn] [Server.cc:493] Waited 1seconds for namespaces.
+(1559038641 603564602) [Err] [Server.cc:498] Waited 11 seconds for namespaces. Giving up.
+(1559038642 610533971) [Err] [Node.cc:125] No namespaces found
+(1559038642 611540713) [Err] [World.cc:2208] Unable to find model[unit_box]
+(1559038642 611586544) [Err] [World.cc:2208] Unable to find model[unit_cylinder]
+(1559038642 611634903) Init world[default]
+(1559038644 214182370) [Err] [Node.cc:125] No namespaces found
+(1559038645 216317916) [Err] [Node.cc:125] No namespaces found
+(1559038645 323811669) [Wrn] [Publisher.cc:141] Queue limit reached for topic /gazebo/default/pose/local/info, deleting message. This warning is printed only once.
+(1559038645 391850956) [Wrn] [Publisher.cc:141] Queue limit reached for topic /gazebo/default/physics/contacts, deleting message. This warning is printed only once.

@@ -1,0 +1,995 @@
+10:17:08: Creating resource group General
+10:17:08: Creating resource group Internal
+10:17:08: Creating resource group Autodetect
+10:17:08: SceneManagerFactory for type 'DefaultSceneManager' registered.
+10:17:08: Registering ResourceManager for type Material
+10:17:08: Registering ResourceManager for type Mesh
+10:17:08: Registering ResourceManager for type Skeleton
+10:17:08: MovableObjectFactory for type 'ParticleSystem' registered.
+10:17:08: ArchiveFactory for archive type FileSystem registered.
+10:17:08: ArchiveFactory for archive type Zip registered.
+10:17:08: ArchiveFactory for archive type EmbeddedZip registered.
+10:17:08: DDS codec registering
+10:17:08: FreeImage version: 3.17.0
+10:17:08: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+10:17:08: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,sgi,rgb,rgba,bw,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti,x3f,webp,jxr,wdp,hdp
+10:17:08: PVRTC codec registering
+10:17:08: ETC codec registering
+10:17:08: Registering ResourceManager for type HighLevelGpuProgram
+10:17:08: Registering ResourceManager for type Compositor
+10:17:08: MovableObjectFactory for type 'Entity' registered.
+10:17:08: MovableObjectFactory for type 'Light' registered.
+10:17:08: MovableObjectFactory for type 'BillboardSet' registered.
+10:17:08: MovableObjectFactory for type 'ManualObject' registered.
+10:17:08: MovableObjectFactory for type 'BillboardChain' registered.
+10:17:08: MovableObjectFactory for type 'RibbonTrail' registered.
+10:17:08: *-*-* OGRE Initialising
+10:17:08: *-*-* Version 1.9.0 (Ghadamon)
+10:17:08: OverlayElementFactory for type Panel registered.
+10:17:08: OverlayElementFactory for type BorderPanel registered.
+10:17:08: OverlayElementFactory for type TextArea registered.
+10:17:08: Registering ResourceManager for type Font
+10:17:08: Loading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/RenderSystem_GL.so
+10:17:08: Installing plugin: GL RenderSystem
+10:17:08: OpenGL Rendering Subsystem created.
+10:17:08: Plugin successfully installed
+10:17:08: Loading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/Plugin_ParticleFX.so
+10:17:08: Installing plugin: ParticleFX
+10:17:08: Particle Emitter Type 'Point' registered
+10:17:08: Particle Emitter Type 'Box' registered
+10:17:08: Particle Emitter Type 'Ellipsoid' registered
+10:17:08: Particle Emitter Type 'Cylinder' registered
+10:17:08: Particle Emitter Type 'Ring' registered
+10:17:08: Particle Emitter Type 'HollowEllipsoid' registered
+10:17:08: Particle Affector Type 'LinearForce' registered
+10:17:08: Particle Affector Type 'ColourFader' registered
+10:17:08: Particle Affector Type 'ColourFader2' registered
+10:17:08: Particle Affector Type 'ColourImage' registered
+10:17:08: Particle Affector Type 'ColourInterpolator' registered
+10:17:08: Particle Affector Type 'Scaler' registered
+10:17:08: Particle Affector Type 'Rotator' registered
+10:17:08: Particle Affector Type 'DirectionRandomiser' registered
+10:17:08: Particle Affector Type 'DeflectorPlane' registered
+10:17:08: Plugin successfully installed
+10:17:08: Loading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/Plugin_BSPSceneManager.so
+10:17:08: Installing plugin: BSP Scene Manager
+10:17:08: Plugin successfully installed
+10:17:08: Loading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/Plugin_OctreeSceneManager.so
+10:17:08: Installing plugin: Octree Scene Manager
+10:17:08: Plugin successfully installed
+10:17:08: CPU Identifier & Features
+10:17:08: -------------------------
+10:17:08:  *   CPU ID: GenuineIntel: Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+10:17:08:  *      SSE: yes
+10:17:08:  *     SSE2: yes
+10:17:08:  *     SSE3: yes
+10:17:08:  *      MMX: yes
+10:17:08:  *   MMXEXT: yes
+10:17:08:  *    3DNOW: no
+10:17:08:  * 3DNOWEXT: no
+10:17:08:  *     CMOV: yes
+10:17:08:  *      TSC: yes
+10:17:08:  *      FPU: yes
+10:17:08:  *      PRO: yes
+10:17:08:  *       HT: no
+10:17:08: -------------------------
+10:17:08: ******************************
+*** Starting GLX Subsystem ***
+******************************
+10:17:08: Registering ResourceManager for type Texture
+10:17:08: Added resource location '/usr/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Creating resource group SkyX
+10:17:08: Added resource location '/usr/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Creating resource group Fonts
+10:17:08: Added resource location '/usr/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Creating resource group LookNFeel
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Creating resource group Schemes
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Creating resource group Imagesets
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Creating resource group Layouts
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Creating resource group Animations
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/local/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/local/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/local/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/local/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/usr/local/share/gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/usr/local/share/gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/domain_randomization_dynamic_objects/dynamic_objects/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/turtlebot3/turtlebot3_simulations/turtlebot3_gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/summit_xl/summit_xl_sim/summit_xl_gazebo/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/skyx' of type 'FileSystem' to resource group 'SkyX'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/rtshaderlib150' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/rtshaderlib' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/materials/programs' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/materials/scripts' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/materials/textures' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/media/models' of type 'FileSystem' to resource group 'General'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/gui/looknfeel' of type 'FileSystem' to resource group 'LookNFeel'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/gui/schemes' of type 'FileSystem' to resource group 'Schemes'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/gui/imagesets' of type 'FileSystem' to resource group 'Imagesets'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/gui/fonts' of type 'FileSystem' to resource group 'Fonts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/gui/layouts' of type 'FileSystem' to resource group 'Layouts'
+10:17:08: Added resource location '/home/simulations/public_sim_ws/src/all/hector_quadrotor_sim/hector_gazebo/hector_gazebo_worlds/media/gui/animations' of type 'FileSystem' to resource group 'Animations'
+10:17:08: GLRenderSystem::_createRenderWindow "OgreWindow(0)", 1x1 windowed  miscParams: FSAA=4 border=none macAPI=cocoa macAPICocoaUseNSView=true parentWindowHandle=23068673 stereoMode=Frame Sequential 
+10:17:08: GLXWindow::create used FBConfigID = 116
+10:17:08: GL_VERSION = 3.0 Mesa 18.0.5
+10:17:08: GL_VENDOR = VMware, Inc.
+10:17:08: GL_RENDERER = llvmpipe (LLVM 6.0, 256 bits)
+10:17:08: GL_EXTENSIONS = GL_AMD_conservative_depth GL_AMD_draw_buffers_blend GL_AMD_seamless_cubemap_per_texture GL_AMD_shader_stencil_export GL_AMD_shader_trinary_minmax GL_ANGLE_texture_compression_dxt3 GL_ANGLE_texture_compression_dxt5 GL_APPLE_packed_pixels GL_ARB_ES2_compatibility GL_ARB_ES3_compatibility GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_color_buffer_float GL_ARB_compressed_texture_pixel_storage GL_ARB_conditional_render_inverted GL_ARB_conservative_depth GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_elements_base_vertex GL_ARB_draw_instanced GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragment_coord_conventions GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_occlusion_query2 GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_polygon_offset_clamp GL_ARB_program_interface_query GL_ARB_provoking_vertex GL_ARB_robustness GL_ARB_sampler_objects GL_ARB_seamless_cube_map GL_ARB_seamless_cubemap_per_texture GL_ARB_separate_shader_objects GL_ARB_shader_bit_encoding GL_ARB_shader_objects GL_ARB_shader_stencil_export GL_ARB_shader_texture_lod GL_ARB_shading_language_100 GL_ARB_shading_language_420pack GL_ARB_shading_language_packing GL_ARB_shadow GL_ARB_stencil_texturing GL_ARB_sync GL_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_buffer_object_rgb32 GL_ARB_texture_buffer_range GL_ARB_texture_compression GL_ARB_texture_compression_rgtc GL_ARB_texture_cube_map GL_ARB_texture_cube_map_array GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_float GL_ARB_texture_gather GL_ARB_texture_mirror_clamp_to_edge GL_ARB_texture_mirrored_repeat GL_ARB_texture_multisample GL_ARB_texture_non_power_of_two GL_ARB_texture_query_levels GL_ARB_texture_query_lod GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_texture_rgb10_a2ui GL_ARB_texture_stencil8 GL_ARB_texture_storage GL_ARB_texture_storage_multisample GL_ARB_texture_swizzle GL_ARB_texture_view GL_ARB_timer_query GL_ARB_transform_feedback2 GL_ARB_transform_feedback3 GL_ARB_transform_feedback_instanced GL_ARB_transform_feedback_overflow_query GL_ARB_transpose_matrix GL_ARB_uniform_buffer_object GL_ARB_vertex_array_bgra GL_ARB_vertex_array_object GL_ARB_vertex_attrib_binding GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_vertex_type_10f_11f_11f_rev GL_ARB_vertex_type_2_10_10_10_rev GL_ARB_window_pos GL_ATI_blend_equation_separate GL_ATI_draw_buffers GL_ATI_fragment_shader GL_ATI_separate_stencil GL_ATI_texture_compression_3dc GL_ATI_texture_env_combine3 GL_ATI_texture_float GL_ATI_texture_mirror_once GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_copy_texture GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_multisample_blit_scaled GL_EXT_framebuffer_object GL_EXT_framebuffer_sRGB GL_EXT_gpu_program_parameters GL_EXT_multi_draw_arrays GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_polygon_offset GL_EXT_polygon_offset_clamp GL_EXT_provoking_vertex GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_shader_integer_mix GL_EXT_shadow_funcs GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_subtexture GL_EXT_texture GL_EXT_texture3D GL_EXT_texture_array GL_EXT_texture_compression_dxt1 GL_EXT_texture_compression_latc GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_add GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_integer GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_rectangle GL_EXT_texture_sRGB GL_EXT_texture_sRGB_decode GL_EXT_texture_shared_exponent GL_EXT_texture_snorm GL_EXT_texture_swizzle GL_EXT_timer_query GL_EXT_transform_feedback GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_IBM_multimode_draw_arrays GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_INGR_blend_func_separate GL_KHR_context_flush_control GL_KHR_debug GL_KHR_no_error GL_MESA_pack_invert GL_MESA_shader_integer_functions GL_MESA_texture_signed_rgba GL_MESA_window_pos GL_MESA_ycbcr_texture GL_NV_blend_square GL_NV_conditional_render GL_NV_depth_clamp GL_NV_fog_distance GL_NV_light_max_exponent GL_NV_packed_depth_stencil GL_NV_primitive_restart GL_NV_texgen_reflection GL_NV_texture_env_combine4 GL_NV_texture_rectangle GL_OES_EGL_image GL_OES_read_format GL_S3_s3tc GL_SGIS_generate_mipmap GL_SGIS_texture_border_clamp GL_SGIS_texture_edge_clamp GL_SGIS_texture_lod GL_SUN_multi_draw_arrays 
+10:17:08: Supported GLX extensions: GLX_ARB_create_context GLX_ARB_create_context_profile GLX_ARB_fbconfig_float GLX_ARB_framebuffer_sRGB GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_create_context_es2_profile GLX_EXT_create_context_es_profile GLX_EXT_fbconfig_packed_float GLX_EXT_framebuffer_sRGB GLX_EXT_import_context GLX_EXT_texture_from_pixmap GLX_EXT_visual_info GLX_EXT_visual_rating GLX_MESA_copy_sub_buffer GLX_MESA_multithread_makecurrent GLX_MESA_query_renderer GLX_OML_swap_method GLX_SGIS_multisample GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGIX_visual_select_group GLX_SGI_make_current_read 
+10:17:08: ***************************
+10:17:08: *** GL Renderer Started ***
+10:17:08: ***************************
+10:17:08: Registering ResourceManager for type GpuProgram
+10:17:08: GLSL support detected
+10:17:08: GL: Using GL_EXT_framebuffer_object for rendering to textures (best)
+10:17:08: FBO PF_UNKNOWN depth/stencil support: D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_L8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_L16 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A4L4 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_BYTE_LA depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_R5G6B5 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_B5G6R5 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A4R4G4B4 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A1R5G5B5 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_R8G8B8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_B8G8R8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A8R8G8B8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_B8G8R8A8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A2R10G10B10 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_A2B10G10R10 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT16_RGB depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT16_RGBA depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT32_RGB depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT32_RGBA depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_X8R8G8B8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_X8B8G8R8 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_SHORT_RGBA depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_R3G3B2 depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT16_R depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT32_R depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_SHORT_GR depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT16_GR depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_FLOAT32_GR depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: FBO PF_SHORT_RGB depth/stencil support: D0S0 D0S1 D0S4 D0S8 D0S16 D16S0 D24S0 D32S0 Packed-D24S8 
+10:17:08: [GL] : Valid FBO targets PF_UNKNOWN PF_L8 PF_L16 PF_A8 PF_A4L4 PF_BYTE_LA PF_R5G6B5 PF_B5G6R5 PF_A4R4G4B4 PF_A1R5G5B5 PF_R8G8B8 PF_B8G8R8 PF_A8R8G8B8 PF_B8G8R8A8 PF_A2R10G10B10 PF_A2B10G10R10 PF_FLOAT16_RGB PF_FLOAT16_RGBA PF_FLOAT32_RGB PF_FLOAT32_RGBA PF_X8R8G8B8 PF_X8B8G8R8 PF_SHORT_RGBA PF_R3G3B2 PF_FLOAT16_R PF_FLOAT32_R PF_SHORT_GR PF_FLOAT16_GR PF_FLOAT32_GR PF_SHORT_RGB 
+10:17:08: RenderSystem capabilities
+10:17:08: -------------------------
+10:17:08: RenderSystem Name: OpenGL Rendering Subsystem
+10:17:08: GPU Vendor: unknown
+10:17:08: Device Name: llvmpipe (LLVM 6.0, 256 bits)
+10:17:08: Driver Version: 3.0.0.0
+10:17:08:  * Fixed function pipeline: yes
+10:17:08:  * Hardware generation of mipmaps: yes
+10:17:08:  * Texture blending: yes
+10:17:08:  * Anisotropic texture filtering: no
+10:17:08:  * Dot product texture operation: yes
+10:17:08:  * Cube mapping: yes
+10:17:08:  * Hardware stencil buffer: yes
+10:17:08:    - Stencil depth: 8
+10:17:08:    - Two sided stencil support: yes
+10:17:08:    - Wrap stencil values: yes
+10:17:08:  * Hardware vertex / index buffers: yes
+10:17:08:  * Vertex programs: yes
+10:17:08:  * Number of floating-point constants for vertex programs: 4096
+10:17:08:  * Number of integer constants for vertex programs: 0
+10:17:08:  * Number of boolean constants for vertex programs: 0
+10:17:08:  * Fragment programs: yes
+10:17:08:  * Number of floating-point constants for fragment programs: 4096
+10:17:08:  * Number of integer constants for fragment programs: 0
+10:17:08:  * Number of boolean constants for fragment programs: 0
+10:17:08:  * Geometry programs: no
+10:17:08:  * Number of floating-point constants for geometry programs: 0
+10:17:08:  * Number of integer constants for geometry programs: 0
+10:17:08:  * Number of boolean constants for geometry programs: 0
+10:17:08:  * Tesselation Hull programs: no
+10:17:08:  * Number of floating-point constants for tesselation hull programs: 0
+10:17:08:  * Number of integer constants for tesselation hull programs: 0
+10:17:08:  * Number of boolean constants for tesselation hull programs: 0
+10:17:08:  * Tesselation Domain programs: no
+10:17:08:  * Number of floating-point constants for tesselation domain programs: 0
+10:17:08:  * Number of integer constants for tesselation domain programs: 0
+10:17:08:  * Number of boolean constants for tesselation domain programs: 0
+10:17:08:  * Compute programs: no
+10:17:08:  * Number of floating-point constants for compute programs: 0
+10:17:08:  * Number of integer constants for compute programs: 0
+10:17:08:  * Number of boolean constants for compute programs: 0
+10:17:08:  * Supported Shader Profiles: arbfp1 arbvp1 glsl ps_1_1 ps_1_2 ps_1_3 ps_1_4
+10:17:08:  * Texture Compression: yes
+10:17:08:    - DXT: yes
+10:17:08:    - VTC: no
+10:17:08:    - PVRTC: no
+10:17:08:    - ATC: no
+10:17:08:    - ETC1: no
+10:17:08:    - ETC2: no
+10:17:08:    - BC4/BC5: no
+10:17:08:    - BC6H/BC7: no
+10:17:08:  * Scissor Rectangle: yes
+10:17:08:  * Hardware Occlusion Query: yes
+10:17:08:  * User clip planes: yes
+10:17:08:  * VET_UBYTE4 vertex element type: yes
+10:17:08:  * Infinite far plane projection: yes
+10:17:08:  * Hardware render-to-texture: yes
+10:17:08:  * Floating point textures: yes
+10:17:08:  * Non-power-of-two textures: yes
+10:17:08:  * 1d textures: yes
+10:17:08:  * Volume textures: yes
+10:17:08:  * Multiple Render Targets: 8
+10:17:08:    - With different bit depths: yes
+10:17:08:  * Point Sprites: yes
+10:17:08:  * Extended point parameters: yes
+10:17:08:  * Max Point Size: 255
+10:17:08:  * Vertex texture fetch: yes
+10:17:08:  * Number of world matrices: 0
+10:17:08:  * Number of texture units: 16
+10:17:08:  * Stencil buffer depth: 8
+10:17:08:  * Number of vertex blend matrices: 0
+10:17:08:    - Max vertex textures: 32
+10:17:08:    - Vertex textures shared: yes
+10:17:08:  * Render to Vertex Buffer : no
+10:17:08:  * Hardware Atomic Counters: no
+10:17:08:  * GL 1.5 without VBO workaround: no
+10:17:08:  * Frame Buffer objects: yes
+10:17:08:  * Frame Buffer objects (ARB extension): no
+10:17:08:  * Frame Buffer objects (ATI extension): no
+10:17:08:  * PBuffer support: yes
+10:17:08:  * GL 1.5 without HW-occlusion workaround: no
+10:17:08:  * Vertex Array Objects: no
+10:17:08:  * Separate shader objects: no
+10:17:08: DefaultWorkQueue('Root') initialising on thread 7ff2f9156280.
+10:17:08: Particle Renderer Type 'billboard' registered
+10:17:08: SceneManagerFactory for type 'BspSceneManager' registered.
+10:17:08: Registering ResourceManager for type BspLevel
+10:17:08: SceneManagerFactory for type 'OctreeSceneManager' registered.
+10:17:08: Parsing scripts for resource group Animations
+10:17:08: Finished parsing scripts for resource group Animations
+10:17:08: Creating resources for group Animations
+10:17:08: All done
+10:17:08: Parsing scripts for resource group Autodetect
+10:17:08: Finished parsing scripts for resource group Autodetect
+10:17:08: Creating resources for group Autodetect
+10:17:08: All done
+10:17:08: Parsing scripts for resource group Fonts
+10:17:08: DefaultWorkQueue('Root')::WorkerFunc - thread 7ff29518f700 starting.
+10:17:08: DefaultWorkQueue('Root')::WorkerFunc - thread 7ff29498e700 starting.
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Parsing script Gazebo.fontdef
+10:17:08: Finished parsing scripts for resource group Fonts
+10:17:08: Creating resources for group Fonts
+10:17:08: All done
+10:17:08: Parsing scripts for resource group General
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script perpixel.program
+10:17:08: Parsing script VPL.program
+10:17:08: Parsing script shadow_caster.program
+10:17:08: Parsing script ShadowCaster.program
+10:17:08: Parsing script StdQuad_vp.program
+10:17:08: Parsing script deferred_post.program
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script gazebo.material
+10:17:08: Parsing script ShadowCaster.material
+10:17:08: Parsing script ssao.material
+10:17:08: Parsing script grid.material
+10:17:08: Parsing script SSAOPost.material
+10:17:08: Parsing script deform.material
+10:17:08: Parsing script picker.material
+10:17:08: Parsing script GBuffer.material
+10:17:08: Parsing script kitchen.material
+10:17:08: Parsing script deferred_post_minilight.material
+10:17:08: Parsing script oculus.material
+10:17:08: Parsing script Modulate.material
+10:17:08: Parsing script CreaseShading.material
+10:17:08: Parsing script blur.material
+10:17:08: Parsing script deferred_post.material
+10:17:08: Parsing script VPL.material
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Parsing script lens_flare.compositor
+10:17:08: Parsing script deferred.compositor
+10:17:08: Parsing script WideCameraLensMap.compositor
+10:17:08: Parsing script CreaseShading.compositor
+10:17:08: Parsing script noise.compositor
+10:17:08: Parsing script blur.compositor
+10:17:08: Parsing script distortion.compositor
+10:17:08: Parsing script SSAOPost.compositor
+10:17:08: Parsing script ssao.compositor
+10:17:08: Finished parsing scripts for resource group General
+10:17:08: Creating resources for group General
+10:17:08: All done
+10:17:08: Parsing scripts for resource group Imagesets
+10:17:08: Finished parsing scripts for resource group Imagesets
+10:17:08: Creating resources for group Imagesets
+10:17:08: All done
+10:17:08: Parsing scripts for resource group Internal
+10:17:08: Finished parsing scripts for resource group Internal
+10:17:08: Creating resources for group Internal
+10:17:08: All done
+10:17:08: Parsing scripts for resource group Layouts
+10:17:08: Finished parsing scripts for resource group Layouts
+10:17:08: Creating resources for group Layouts
+10:17:08: All done
+10:17:08: Parsing scripts for resource group LookNFeel
+10:17:08: Finished parsing scripts for resource group LookNFeel
+10:17:08: Creating resources for group LookNFeel
+10:17:08: All done
+10:17:08: Parsing scripts for resource group Schemes
+10:17:08: Finished parsing scripts for resource group Schemes
+10:17:08: Creating resources for group Schemes
+10:17:08: All done
+10:17:08: Parsing scripts for resource group SkyX
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Parsing script SkyX.material
+10:17:08: Finished parsing scripts for resource group SkyX
+10:17:08: Creating resources for group SkyX
+10:17:08: All done
+10:17:08: Added resource location '/usr/share/gazebo/media/rtshaderlib/' of type 'FileSystem' to resource group 'General'
+10:17:08: Creating resource group ShaderGeneratorResourceGroup
+10:17:08: Added resource location '/tmp/gazebo-user-rtshaderlibcache/' of type 'FileSystem' to resource group 'ShaderGeneratorResourceGroup'
+10:17:22: Can't assign material _NULL_ to SubEntity of SkyXMeshEnt because this Material does not exist. Have you forgotten to define it in a .material script?
+10:17:22: Texture: SkyX_Starfield.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+10:17:22: Texture: SkyX_Moon.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+10:17:22: Texture: SkyX_MoonHalo.png: Loading 1 faces(PF_SHORT_RGBA,512x256x1) with 5 hardware generated mipmaps from Image. Internal format is PF_SHORT_RGBA,512x256x1.
+10:17:23: Texture: Noise.jpg: Loading 1 faces(PF_R8G8B8,1024x1024x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
+10:17:53: Unregistering ResourceManager for type Font
+10:17:53: DefaultWorkQueue('Root') shutting down on thread 7ff2f9156280.
+10:17:53: DefaultWorkQueue('Root')::WorkerFunc - thread 7ff29518f700 stopped.
+10:17:53: DefaultWorkQueue('Root')::WorkerFunc - thread 7ff29498e700 stopped.
+10:17:53: Unregistering ResourceManager for type BspLevel
+10:17:53: *-*-* OGRE Shutdown
+10:17:53: Unregistering ResourceManager for type Compositor
+10:17:53: Unregistering ResourceManager for type Skeleton
+10:17:53: Unregistering ResourceManager for type Mesh
+10:17:53: Unregistering ResourceManager for type HighLevelGpuProgram
+10:17:53: Uninstalling plugin: Octree Scene Manager
+10:17:53: Plugin successfully uninstalled
+10:17:53: Unloading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/Plugin_OctreeSceneManager.so
+10:17:53: Uninstalling plugin: BSP Scene Manager
+10:17:53: Plugin successfully uninstalled
+10:17:53: Unloading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/Plugin_BSPSceneManager.so
+10:17:53: Uninstalling plugin: ParticleFX
+10:17:53: Plugin successfully uninstalled
+10:17:53: Unloading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/Plugin_ParticleFX.so
+10:17:53: Uninstalling plugin: GL RenderSystem
+10:17:53: Unregistering ResourceManager for type GpuProgram
+10:17:53: ******************************
+*** Stopping GLX Subsystem ***
+******************************
+10:17:53: Unregistering ResourceManager for type Texture
+10:17:53: Plugin successfully uninstalled
+10:17:53: Unloading library /usr/lib/x86_64-linux-gnu/OGRE-1.9.0/RenderSystem_GL.so
+10:17:53: Unregistering ResourceManager for type Material

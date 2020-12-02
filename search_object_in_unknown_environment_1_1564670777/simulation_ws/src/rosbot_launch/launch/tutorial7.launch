@@ -1,0 +1,5 @@
+<launch>
+    <arg name="use_rosbot" value="false"/>
+    <arg name="use_gazebo" value="true"/>
+    <include file="$(find tutorial_pkg)/launch/tutorial_7_gazebo.launch"/>
+</launch>
