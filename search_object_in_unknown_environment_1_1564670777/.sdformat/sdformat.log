@@ -1,1 +1,0 @@
-Warning [parser.cc:835] XML Element[gravity], child of element[physics] not defined in SDF. Ignoring[gravity]. You may have an incorrect SDF file, or an sdformat version that doesn't support this element.

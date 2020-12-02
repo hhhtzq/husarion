@@ -1,8 +1,0 @@
-prefix=/home/user/simulation_ws/devel
-
-Name: rosbot_navigation
-Description: Description of rosbot_navigation
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/user/simulation_ws/devel/lib 
-Requires: 
