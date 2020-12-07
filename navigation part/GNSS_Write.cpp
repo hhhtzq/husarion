@@ -1,20 +1,37 @@
 #include <ros/ros.h>
-#include<fstream>   
-#include<string>   
-#include<iostream>   
-#include<vector>   
-#include<sstream>   
-#include <iomanip>
-#include<fcntl.h>
-#include <unistd.h> //liunx库，windows没有
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <termios.h>
+#include <std_msgs/Float64MultiArray.h>
+#include <geometry_msgs/Vector3.h>
+#include <cmath>
+#include <ros/ros.h>
+#include <sensor_msgs/Image.h>
+#include <std_msgs/UInt8.h>
+#include <std_srvs/Empty.h>
+#include <std_srvs/Trigger.h>
+#include <geometry_msgs/Twist.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <std_msgs/Float64.h>
-#include <std_msgs/Float64MultiArray.h>
+
+#include <fstream>
+#include <string>
+#include <cstdlib>
+#include <iomanip>
+#include <cstring>
+#include <vector>
+#include <fcntl.h>
+#include <unistd.h>
+
+
 using namespace std;
 
 ros::Publisher gnss_puber; // Define publisher gnss_puber
-#define COPYMODE 0644; // Define writer mode
+//#define COPYMODE 0644; // Define writer mode
 
 static double gnss_time = 1;
 static double gnss_x = 3;
@@ -99,7 +116,7 @@ int main(int argc, char** argv)
     gnss_puber = n.advertise<std_msgs::Float64MultiArray>("gnss_data", 1);  //Defining topic to subscribe 发布话题gnss_data
 
     int fd = open("/dev/gnss", O_RDWR);  // Open gnss port
-    int fdwrite = creat("/home/husarion/wenqi/gnss/data.txt", COPYMODE);
+    //int fdwrite = creat("/home/husarion/wenqi/gnss/data.txt", COPYMODE);
     char buff[1024];
 
     int sockfd;
@@ -109,7 +126,7 @@ int main(int argc, char** argv)
     servadd.sin_family = AF_INET; // AF_INET（TCP/IP – IPv4）
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
-    if (connect(sock_id, (struct sockaddr*)&servadd, sizeof(servadd)) != 0)
+    if (connect(sockfd, (struct sockaddr*)&servadd, sizeof(servadd)) != 0)
     {
         cout << "connected" << endl;
     }
@@ -120,8 +137,8 @@ int main(int argc, char** argv)
     {
         int mess_len = read(sockfd, buff, 1024); //read data from 108.61.171.128
         write(fd, buff, mess_len); // Write data to the port
-        int read_len = read(fd, buf, 1024); // Read GNSS data
-        ssize_t result = write(fdwrite, buff, read_len);  // Write the data in to gnss_data.txt
+        int read_len = read(fd, buff, 1024); // Read GNSS data
+        //ssize_t result = write(fdwrite, buff, read_len);  // Write the data in to gnss_data.txt
 
         double gnss_data[2];
 
