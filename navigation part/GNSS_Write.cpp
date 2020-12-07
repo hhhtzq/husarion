@@ -1,4 +1,4 @@
-﻿#include <ros/ros.h>
+#include <ros/ros.h>
 #include<fstream>   
 #include<string>   
 #include<iostream>   
@@ -20,17 +20,6 @@ static double gnss_time = 1;
 static double gnss_x = 3;
 static double gnss_y = 9;
 static double gnss_PDOP = 4; //Position Dilution of Precision
-
- //feed correction data
-/*
-int sock_id; 
-struct sockaddr_in servadd; 
-inet_aton("108.61.171.128", &(servadd.sin_addr)); // Convert IP address from point format to unsigned long integer
-servadd.sin_port = htons(29000); // Set up port
-servadd.sin_family = AF_INET; // Set up address family
-sock_id = socket(AF_INET, SOCK_STREAM, 0);  //获得id 
-*/
-
 
 void gnss_decode(std::string input_str, double* gnss_data)
 {
@@ -104,20 +93,35 @@ void gnss_decode(std::string input_str, double* gnss_data)
 
 int main(int argc, char** argv)
 {
-    int fdwrite = creat("/home/husarion/yy/project/gnss_data/data.txt", COPYMODE);//写入的地址    Define address to write the data
-
     ros::init(argc, argv, "gnss_node"); //Initialization of ROS node
     ros::NodeHandle n("~"); //Get the handle for node
     ros::Rate loop_rate(1000); //Define rate for repeatable operations.
     gnss_puber = n.advertise<std_msgs::Float64MultiArray>("gnss_data", 1);  //Defining topic to subscribe 发布话题gnss_data
 
     int fd = open("/dev/gnss", O_RDWR);  // Open gnss port
+    int fdwrite = creat("/home/husarion/wenqi/gnss/data.txt", COPYMODE);
     char buff[1024];
+
+    int sockfd;
+    struct sockaddr_in servadd;
+    inet_aton("108.61.171.128", &(servadd.sin_addr));
+    servadd.sin_port = htons(29000); //将无符号短整型主机字节序转换为网络字节序
+    servadd.sin_family = AF_INET; // AF_INET（TCP/IP – IPv4）
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+
+    if (connect(sock_id, (struct sockaddr*)&servadd, sizeof(servadd)) != 0)
+    {
+        cout << "connected" << endl;
+    }
+
+
+
     while (ros::ok()) //Check if ROS is working
     {
-        int read_len = read(fd, buff, 1024); // read gnss port
-        ssize_t result = write(fdwrite, buff, read_len); // write data
-        /*读串口，写入  ssize_t是有符号整型，在32位机器上等同与int，在64位机器上等同与long int。 write()会把参数buff所指的内存写入read_len个字节到参数放到所指的文件fdwrite内。 */
+        int mess_len = read(sockfd, buff, 1024); //read data from 108.61.171.128
+        write(fd, buff, mess_len); // Write data to the port
+        int read_len = read(fd, buf, 1024); // Read GNSS data
+        ssize_t result = write(fdwrite, buff, read_len);  // Write the data in to gnss_data.txt
 
         double gnss_data[2];
 
