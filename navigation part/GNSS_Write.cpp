@@ -6,15 +6,14 @@
 #include <std_msgs/Float64MultiArray.h>
 #include <geometry_msgs/Vector3.h>
 #include <cmath>
-#include <ros/ros.h>
 #include <sensor_msgs/Image.h>
 #include <std_msgs/UInt8.h>
 #include <std_srvs/Empty.h>
 #include <std_srvs/Trigger.h>
 #include <geometry_msgs/Twist.h>
+#include <errno.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
@@ -26,12 +25,11 @@
 #include <vector>
 #include <fcntl.h>
 #include <unistd.h>
-
-
+#define COPYMODE 0644
 using namespace std;
 
+
 ros::Publisher gnss_puber; // Define publisher gnss_puber
-//#define COPYMODE 0644; // Define writer mode
 
 static double gnss_time = 1;
 static double gnss_x = 3;
@@ -98,12 +96,13 @@ void gnss_decode(std::string input_str, double* gnss_data)
             A = int(longitude / 100);
             longitude = (((longitude / 100) - A) * 100) / 60 + A;
 
-            string Latitude = to_string(latitude) + "°";
-            string Longitude = to_string(longitude) + "°";
+            //string Latitude = to_string(latitude) + "°";
+            //string Longitude = to_string(longitude) + "°";
 
             gnss_data[0] = latitude;
             gnss_data[1] = longitude;
         }
+        
     }
 
 }
@@ -115,8 +114,8 @@ int main(int argc, char** argv)
     ros::Rate loop_rate(1000); //Define rate for repeatable operations.
     gnss_puber = n.advertise<std_msgs::Float64MultiArray>("gnss_data", 1);  //Defining topic to subscribe 发布话题gnss_data
 
-    int fd = open("/dev/gnss", O_RDWR);  // Open gnss port
-    //int fdwrite = creat("/home/husarion/wenqi/gnss/data.txt", COPYMODE);
+    int fd = open("/dev/ttyACM0", O_RDWR|O_NOCTTY|O_NDELAY);  // Open gnss port
+    int fdwrite = creat("/home/husarion/wenqi/gnss/data.txt", COPYMODE);
     char buff[1024];
 
     int sockfd;
@@ -138,7 +137,7 @@ int main(int argc, char** argv)
         int mess_len = read(sockfd, buff, 1024); //read data from 108.61.171.128
         write(fd, buff, mess_len); // Write data to the port
         int read_len = read(fd, buff, 1024); // Read GNSS data
-        //ssize_t result = write(fdwrite, buff, read_len);  // Write the data in to gnss_data.txt
+        ssize_t result = write(fdwrite, buff, read_len);  // Write the data in to gnss_data.txt
 
         double gnss_data[2];
 
@@ -147,17 +146,27 @@ int main(int argc, char** argv)
         double gnss_data_lat = gnss_data[0];
         double gnss_data_lon = gnss_data[1];
 
+        //cout<< gnss_data_lat << endl;
+        //cout<< gnss_data_lon << endl;
+
         if (gnss_data_lat != -1) 
         {
             //package value to gnss_message
+            cout << "in if" << endl;
+            cout<< gnss_data_lat << endl;
+            cout<< gnss_data_lon << endl;
+            /*
             std::vector<double> gnss_data_buff;
             gnss_data_buff.push_back(gnss_time);
             gnss_data_buff.push_back(gnss_data_lat);
             gnss_data_buff.push_back(gnss_data_lon);
             gnss_data_buff.push_back(gnss_PDOP);
+            */
 
             std_msgs::Float64MultiArray gnss_value; //定义消息gnss_value，往gnss_value中装入需要广播的消息
-            gnss_value.data = gnss_data_buff;  //将gnss_data_buff 装入 gnss_value
+            gnss_value.data.push_back(gnss_data_lat);
+            gnss_value.data.push_back(gnss_data_lon);
+            //gnss_value.data = gnss_data_buff;  //将gnss_data_buff 装入 gnss_value
             gnss_puber.publish(gnss_value);  //广播
         }
         ros::spinOnce(); //Process all incoming messages.
