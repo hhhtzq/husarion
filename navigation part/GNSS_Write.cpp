@@ -16,6 +16,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <iomanip>
 
 #include <fstream>
 #include <string>
@@ -25,18 +26,12 @@
 #include <vector>
 #include <fcntl.h>
 #include <unistd.h>
-//#define COPYMODE 0644
+#define COPYMODE 0644
 using namespace std;
 
 
 ros::Publisher gnss_puber; // Define publisher gnss_puber
 
-/*
-static double gnss_time = 1;
-static double gnss_x = 3;
-static double gnss_y = 9;
-static double gnss_PDOP = 4; //Position Dilution of Precision
-*/
 
 void gnss_decode(std::string input_str, double* gnss_data)
 {
@@ -44,7 +39,7 @@ void gnss_decode(std::string input_str, double* gnss_data)
     gnss_data[1] = -1;
     gnss_data[2] = -1;
     gnss_data[3] = -1;
-	
+
     vector<string> arr1;  //定义一个字符串容器  Define a string container
     int position = 0;
     do
@@ -61,9 +56,8 @@ void gnss_decode(std::string input_str, double* gnss_data)
         string title = arr1[0].substr(3, 3);  // Define NMEA title
         if (title == string("GGA"))
         {
-            string time_s = arr1[1];
-            double time_d = stod(time_s);
-            string UTC_Time = time_s.substr(0, 2) + ":" + time_s.substr(2, 2) + ":" + time_s.substr(4, 2);
+            double time_d = stod(arr1[1]);
+            string UTC_Time = arr1[1].substr(0, 2) + ":" + arr1[1].substr(2, 2) + ":" + arr1[1].substr(4, 2);
 
             string latitude_s = arr1[2];
             string NS_Indicator = arr1[3];
@@ -79,15 +73,15 @@ void gnss_decode(std::string input_str, double* gnss_data)
             A = int(longitude / 100);
             longitude = (((longitude / 100) - A) * 100) / 60 + A;  // Calculate the longitude in degrees
 
-            string Latitude = to_string(latitude) + "°";  // Convert to string to storage
-            string Longitude = to_string(longitude) + "°";
+            //string Latitude = to_string(latitude);  // Convert to string to storage
+            //string Longitude = to_string(longitude);
 
-            double status = stod(arrl[6]); // Fix mode; 0 = Invalid; 1 = 2D/3D; 2 = DGNSS; 4 = Fixed RTX; 5 = Float RTX; 6 = Dead Reckoning
+            double fix_status = stod(arr1[6]); // Fix mode; 0 = Invalid; 1 = 2D/3D; 2 = DGNSS; 4 = Fixed RTX; 5 = Float RTX; 6 = Dead Reckoning
 
             gnss_data[0] = time_d;
             gnss_data[1] = latitude;
             gnss_data[2] = longitude;
-            gnss_data[3] = status;
+            gnss_data[3] = fix_status;
         }      
     }
 
@@ -95,27 +89,28 @@ void gnss_decode(std::string input_str, double* gnss_data)
 
 int main(int argc, char** argv)
 {
+    int fdwrite = creat("/home/husarion/wenqi/gnss_data.txt",COPYMODE);
+    stringstream fileoutstream;
+
     ros::init(argc, argv, "gnss_node"); //Initialization of ROS node
     ros::NodeHandle n("~"); //Get the handle for node
     ros::Rate loop_rate(1000); //Define rate for repeatable operations.
     gnss_puber = n.advertise<std_msgs::Float64MultiArray>("gnss_data", 1);  //Defining topic to subscribe 发布话题gnss_data
 
     int fd = open("/dev/ttyACM0", O_RDWR|O_NOCTTY|O_NDELAY);  // Open gnss port
-    //int fdwrite = creat("/home/husarion/wenqi/gnss/data.txt", COPYMODE);
     char buff[1024];
 
     int sockfd;
     struct sockaddr_in servadd;
     inet_aton("108.61.171.128", &(servadd.sin_addr));
-    servadd.sin_port = htons(29000); //将无符号短整型主机字节序转换为网络字节序
+    servadd.sin_port = htons(29000); 
     servadd.sin_family = AF_INET; // AF_INET（TCP/IP – IPv4）
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
     if (connect(sockfd, (struct sockaddr*)&servadd, sizeof(servadd)) != 0)
     {
-        cout << "connected" << endl;
+        cout << "Connected" << endl;
     }
-
 
     while (ros::ok()) //Check if ROS is working
     {
@@ -123,25 +118,29 @@ int main(int argc, char** argv)
         write(fd, buff, mess_len); // Write data to the port
         int read_len = read(fd, buff, 1024); // Read GNSS data
 
-        double gnss_data[2];
+        double gnss_data[4];
 
         gnss_decode(std::string(buff), gnss_data);  // Decode gnss data
-		//ssize_t result = write(fdwrite, UTC_Time, read_len);  // Write the data in to gnss_data.txt
-
 
         double gnss_data_time = gnss_data[0];
         double gnss_data_lat = gnss_data[1];
         double gnss_data_lon = gnss_data[2];
         double gnss_data_status = gnss_data[3];
 
+
         if (gnss_data_lat != -1) 
         {
             //package value to gnss_message
-            cout << gnss_data_time << \t\t 
-            cout << gnss_data_lat << \t\t;
-            cout << gnss_data_lon << \t\t;
+            cout << gnss_data_time << "\t\t";
+            cout << gnss_data_lat << "\t\t";
+            //cout << fixed << setprecision(5) << gnss_data_lon << "\t\t";
+            cout << gnss_data_lon << "\t\t";
             cout << gnss_data_status << endl;
 
+            fileoutstream << gnss_data_time << " " << setprecision(10) << gnss_data_lat << " " << setprecision(10) << gnss_data_lon << endl;
+            string outstring = fileoutstream.str();
+            ssize_t result = write(fdwrite,outstring.c_str(),outstring.size());
+            fileoutstream.str("");
 
             std_msgs::Float64MultiArray gnss_value; //定义消息gnss_value，往gnss_value中装入需要广播的消息
             gnss_value.data.push_back(gnss_data_time);
