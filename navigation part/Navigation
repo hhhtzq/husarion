@@ -1,0 +1,371 @@
+
+#include <ros/ros.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <termios.h>
+#include <std_msgs/Float64MultiArray.h>
+#include <std_msgs/UInt8.h>
+#include <geometry_msgs/Vector3.h>
+#include <cmath>
+#include <math.h>
+#include <geometry_msgs/Twist.h>
+
+#include <fcntl.h>
+#include <time.h>
+
+using namespace std;
+//motor topic
+geometry_msgs::Twist set_vel;
+ros::Publisher action_pub;
+
+//motion constant parameters
+// turn
+const double turn_threshold = 3; // max error of target degree
+const double motor_turn_speed = 0.7; //转向转速
+
+const double GNSSANGLE_TH_MIN = 3;
+const double GNSSANGLE_TH_MAX = 6;
+
+//straight
+const double distance2speed_k = 2.5; //算法系数k  3.125
+const double distance_threshold_x = 0.2; // 20cm
+const double max_speed = 0.8; // m/s
+const double distance2speed_b = -0.625;
+const int straight_time = 5; // 5Hz/5 = 1Hz = 1S
+
+// 分频器 frequency divide
+const unsigned int motor_min_period = 10; // 10*0.02s
+
+const unsigned int gui_update_period = 30; // 30*0.02s
+
+
+// flags
+bool is_turn_correct = false; //自传到指定角度
+bool gnss_isUpdate = false; //判断gnss是否为最新数据
+bool is_update_angle = false; //用gnss计算角度的过程是否完成
+bool autoDrive_flag = false; //自动驾驶切换手动驾驶
+
+// navigation parameters
+// Cartesian data
+double target_x;
+double target_y;
+double gnss_x;
+double gnss_y;
+
+// row gnss data
+double gnss_time;
+double gnss_lat;
+double gnss_lon;
+double gnss_PDOP;
+
+double gnssAngle_x_old = 0;
+double gnssAngle_y_old = 0;
+
+// calculate value
+double gnss_angle = 0;
+
+// imu data
+double imu_angle = 0;
+double imu_delta = 0;
+double imu_fake = 0;
+
+
+// FSM(Finite State Machine) DRIVE
+const int FSM_DRIVESTATE_TURN = 0;
+const int FSM_DRIVESTATE_STRAIGHT = 1;
+const int FSM_DRIVESTATE_FINAL = 2;
+const int FSM_DRIVESTATE_GNSSNORTH = 3;
+
+int driveFSM_state = FSM_DRIVESTATE_TURN;
+
+int straight_timer = 0;
+
+int print_counter = 0;
+
+//创建笛卡尔坐标系下的gnss得出的角度函数
+double delta_xy_heading_angle(double delta_x, double delta_y) {
+
+    double rad = atan2(delta_y, delta_x); //用arctan求出弧度
+    double degree = rad / M_PI * 180; //弧度化角度
+    return degree;
+
+}
+
+
+
+//将经纬度的角度值转化为笛卡尔坐标系下的x,y值
+void angle_deg2desc_m(double lat, double lon, double* result)
+{
+
+    result[0] = (2 * M_PI * 6371e3 * lon) * cos((lat / 180) * M_PI) / 360; //x
+    result[1] = 2 * M_PI * 6371e3 * lat / 360; //y
+
+}
+
+// 创建直线速度函数
+double distance2speed(double distance)
+{
+    double speed = 0;
+    if (distance > distance_threshold_x) //实现变速
+    {
+        speed = distance2speed_k * distance + (distance2speed_b); //速度与距离的线性关系
+        if (speed > max_speed)
+        {
+            speed = max_speed;
+        }
+    }
+    return speed;
+}
+
+
+// imu callback function
+void suber_imuCallback(const geometry_msgs::Vector3& imu_message) {
+
+    imu_fake = imu_message.z; //读imu绕Z轴的角度
+    imu_angle = imu_fake + imu_delta; //calibration imu
+    if (imu_angle > 180) {
+        imu_angle = imu_angle - 360;
+    }
+    else if (imu_angle < -180) {
+        imu_angle = imu_angle + 360;
+    }
+}
+
+// gnss callback function
+void suber_gnssCallback(const std_msgs::Float64MultiArray& gnss_message) {
+    // Allocate storage space
+    gnss_time = gnss_message.data[0];
+    gnss_lat = gnss_message.data[1];
+    gnss_lon = gnss_message.data[2];
+    gnss_PDOP = gnss_message.data[3];
+    double result[2]; // Declare variable space
+    angle_deg2desc_m(gnss_lat, gnss_lon, result); //调用函数并分配值
+    gnss_x = result[0];
+    gnss_y = result[1];
+    gnss_isUpdate = true; //执行前面的函数
+}
+//相应Google map上触摸目标点功能函数
+void suber_targetCallback(const std_msgs::Float64MultiArray& target_message) {
+    // Allocate storage space
+    //double target_la = target_message.data[0];
+    //double target_lo = target_message.data[1];
+    //62.395534730497495,17.283029115710757
+
+    double target_la = 62.395534730497495;
+    double target_lo = 17.283029115710757;
+    double result[2];
+    angle_deg2desc_m(target_la, target_lo, result); //调用函数并负值
+    target_x = result[0];
+    target_y = result[1];
+
+    driveFSM_state = FSM_DRIVESTATE_TURN;
+    print_counter = 0;
+}
+
+
+
+
+
+int main(int argc, char** argv) {
+    ros::init(argc, argv, "navigation_node"); //Initialization of node
+    ros::NodeHandle n("~"); //get handle
+    ros::Rate loop_rate(50); //Define rate for repeatable operations 最原始的频率
+    //create IMU subscriber
+    ros::Subscriber suber_imu = n.subscribe("/rpy", 10, suber_imuCallback);
+    //create gnss subscriber
+    ros::Subscriber suber_gnss = n.subscribe("/gnss_node/gnss_data", 10, suber_gnssCallback);
+    //create wheels publisher
+    action_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
+
+
+    while (ros::ok())
+    {
+        //main计数器
+        static unsigned int counter = 0;
+        counter++;
+
+        // 用卫星告知小车真实角度
+        if (driveFSM_state == FSM_DRIVESTATE_GNSSNORTH) {
+            static int gnssNorth_count = 0;
+            static double x_1 = 0;
+            static double y_1 = 0;
+            static double x_2 = 0;
+            static double y_2 = 0;
+
+
+            if (gnssNorth_count == 0) {
+                x_1 = gnss_x;
+                y_1 = gnss_y;
+                // run
+                set_vel.linear.x = 1;
+                set_vel.linear.y = 0;
+                set_vel.linear.z = 0;
+                set_vel.angular.x = 0;
+                set_vel.angular.y = 0;
+                set_vel.angular.z = 0;
+                action_pub.publish(set_vel);
+                gnssNorth_count++;
+            }
+            else if (gnssNorth_count < 50) //让小车走一段距离，代表它找到卫星并可以印出自身走向角度
+            {
+                gnssNorth_count++;
+            }
+            else {
+                set_vel.linear.x = 0;
+                set_vel.linear.y = 0;
+                set_vel.linear.z = 0;
+                set_vel.angular.x = 0;
+                set_vel.angular.y = 0;
+                set_vel.angular.z = 0;
+                action_pub.publish(set_vel);
+
+                x_2 = gnss_x;
+                y_2 = gnss_y;
+
+                gnssAngle_x_old = gnss_x;
+                gnssAngle_y_old = gnss_y;
+
+                //flags
+                gnssNorth_count = 0;
+                //calculation
+                gnss_angle = delta_xy_heading_angle(x_2 - x_1, y_2 - y_1);
+                // update imu_delta修正角
+
+                imu_delta = gnss_angle - imu_fake;
+                if (imu_delta > 180) {
+                    imu_delta = imu_delta - 360;
+                }
+                else if (imu_delta < -180) {
+                    imu_delta = imu_delta + 360;
+                }
+                driveFSM_state = FSM_DRIVESTATE_TURN;
+            }
+
+        }
+
+
+
+      
+
+            // auto drive period
+            if (counter % motor_min_period == 0) // 5Hz
+            {
+
+                // DRIVE FSM
+                if (driveFSM_state == FSM_DRIVESTATE_TURN) {
+
+                    double aim_angle = (atan2(target_y - gnss_y, target_x - gnss_x) * 180) / M_PI;
+                    double diff_angle = aim_angle - imu_angle;
+                    if (diff_angle > 180) {
+                        diff_angle = diff_angle - 360;
+                    }
+                    else if (diff_angle < -180) {
+                        diff_angle = diff_angle + 360;
+                    }
+                    //cout<<"diff_angle: "<<diff_angle<<endl;
+                    if (abs(diff_angle) >= turn_threshold) //abs=绝对值
+                    {
+                        if (diff_angle > 0)
+                        {
+                            set_vel.linear.x = 0;
+                            set_vel.linear.y = 0;
+                            set_vel.linear.z = 0;
+                            set_vel.angular.x = 0;
+                            set_vel.angular.y = 0;
+                            set_vel.angular.z = motor_turn_speed;
+                        }
+                        else
+                        {
+                            set_vel.linear.x = 0;
+                            set_vel.linear.y = 0;
+                            set_vel.linear.z = 0;
+                            set_vel.angular.x = 0;
+                            set_vel.angular.y = 0;
+                            set_vel.angular.z = -motor_turn_speed;
+                        }
+                        action_pub.publish(set_vel);
+
+                    }
+                    else {
+                        set_vel.linear.x = 0;
+                        set_vel.linear.y = 0;
+                        set_vel.linear.z = 0;
+                        set_vel.angular.x = 0;
+                        set_vel.angular.y = 0;
+                        set_vel.angular.z = 0;
+                        action_pub.publish(set_vel);
+                        driveFSM_state = FSM_DRIVESTATE_STRAIGHT;
+                        //cout<<"turn down"<<endl;
+                    }
+
+                }
+                else if (driveFSM_state == FSM_DRIVESTATE_STRAIGHT) {
+                    //cout<<"straight"<<endl;
+                    double distance = sqrt(pow(target_x - gnss_x, 2) + pow(target_y - gnss_y, 2));
+                    cout << "distance: " << distance << endl;
+                    double speed = distance2speed(distance);
+                    set_vel.linear.x = speed;
+                    set_vel.linear.y = 0;
+                    set_vel.linear.z = 0;
+                    set_vel.angular.x = 0;
+                    set_vel.angular.y = 0;
+                    set_vel.angular.z = 0;
+                    action_pub.publish(set_vel);
+                    straight_timer++;
+                    if (distance <= distance_threshold_x) {
+                        driveFSM_state = FSM_DRIVESTATE_FINAL;
+                    }
+
+                    else if (straight_timer >= straight_time) // 0.5Hz
+                    {
+                        //cout<<"straight down"<<endl;
+                        straight_timer = 0;
+                        // calculate GNSS angle
+                        gnss_angle = delta_xy_heading_angle(gnss_x - gnssAngle_x_old, gnss_y - gnssAngle_y_old);
+                        double diff = gnss_angle - imu_angle;
+                        if (diff > GNSSANGLE_TH_MIN && diff < GNSSANGLE_TH_MAX) {
+                            imu_delta = gnss_angle - imu_fake;
+                            if (imu_delta > 180) {
+                                imu_delta = imu_delta - 360;
+                            }
+                            else if (imu_delta < -180) {
+                                imu_delta = imu_delta + 360;
+                            }
+                        }
+
+
+
+                        gnssAngle_x_old = gnss_x;
+                        gnssAngle_y_old = gnss_y;
+                        // change FSM
+                        driveFSM_state = FSM_DRIVESTATE_TURN;
+                    }
+                }
+                else if (driveFSM_state == FSM_DRIVESTATE_FINAL) {
+                    set_vel.linear.x = 0;
+                    set_vel.linear.y = 0;
+                    set_vel.linear.z = 0;
+                    set_vel.angular.x = 0;
+                    set_vel.angular.y = 0;
+                    set_vel.angular.z = 0;
+                    action_pub.publish(set_vel);
+                    if (print_counter < 10)
+                    {
+                        time_t nowtime;
+                        nowtime = time(NULL); //获取当前时间
+                        cout << nowtime << endl;
+                        cout << "time" << nowtime << ", " << "final_lat: " << std::setprecision(20) << gnss_lat << endl;
+                        cout << "time" << nowtime << ", " << "final_lon: " << std::setprecision(20) << gnss_lon << endl;
+                        //time
+                        print_counter++;
+                    }
+
+                }
+            }   
+        gnss_isUpdate = false;
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+}
+
