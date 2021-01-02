@@ -123,7 +123,7 @@ double distance2speed(double distance)
 void suber_imuCallback(const geometry_msgs::Vector3& imu_message) {
 
     imu_fake = imu_message.z; //读imu绕Z轴的角度
-    imu_angle = imu_fake + imu_delta; //calibration imu
+    imu_angle = imu_fake + imu_delta; //calibration imu    
     if (imu_angle > 180) {
         imu_angle = imu_angle - 360;
     }
@@ -138,7 +138,6 @@ void suber_gnssCallback(const std_msgs::Float64MultiArray& gnss_message) {
     gnss_time = gnss_message.data[0];
     gnss_lat = gnss_message.data[1];
     gnss_lon = gnss_message.data[2];
-    gnss_PDOP = gnss_message.data[3];
     double result[2]; // Declare variable space
     angle_deg2desc_m(gnss_lat, gnss_lon, result); //调用函数并分配值
     gnss_x = result[0];
@@ -152,8 +151,8 @@ void suber_targetCallback(const std_msgs::Float64MultiArray& target_message) {
     //double target_lo = target_message.data[1];
     //62.395534730497495,17.283029115710757
 
-    double target_la = 62.395534730497495;
-    double target_lo = 17.283029115710757;
+    double target_la = 62.39380;
+    double target_lo = 17.28307;
     double result[2];
     angle_deg2desc_m(target_la, target_lo, result); //调用函数并负值
     target_x = result[0];
@@ -246,103 +245,49 @@ int main(int argc, char** argv) {
 
 
 
-      
 
-            // auto drive period
-            if (counter % motor_min_period == 0) // 5Hz
-            {
 
-                // DRIVE FSM
-                if (driveFSM_state == FSM_DRIVESTATE_TURN) {
+        // auto drive period
 
-                    double aim_angle = (atan2(target_y - gnss_y, target_x - gnss_x) * 180) / M_PI;
-                    double diff_angle = aim_angle - imu_angle;
-                    if (diff_angle > 180) {
-                        diff_angle = diff_angle - 360;
-                    }
-                    else if (diff_angle < -180) {
-                        diff_angle = diff_angle + 360;
-                    }
-                    //cout<<"diff_angle: "<<diff_angle<<endl;
-                    if (abs(diff_angle) >= turn_threshold) //abs=绝对值
+        if (counter % motor_min_period == 0) // 5Hz
+        {
+
+            // DRIVE FSM
+            if (driveFSM_state == FSM_DRIVESTATE_TURN) {
+
+                double aim_angle = (atan2(target_y - gnss_y, target_x - gnss_x) * 180) / M_PI;
+                double diff_angle = aim_angle - imu_angle;
+                if (diff_angle > 180) {
+                    diff_angle = diff_angle - 360;
+                }
+                else if (diff_angle < -180) {
+                    diff_angle = diff_angle + 360;
+                }
+                //cout<<"diff_angle: "<<diff_angle<<endl;
+                if (abs(diff_angle) >= turn_threshold) //abs=绝对值
+                {
+                    if (diff_angle > 0)
                     {
-                        if (diff_angle > 0)
-                        {
-                            set_vel.linear.x = 0;
-                            set_vel.linear.y = 0;
-                            set_vel.linear.z = 0;
-                            set_vel.angular.x = 0;
-                            set_vel.angular.y = 0;
-                            set_vel.angular.z = motor_turn_speed;
-                        }
-                        else
-                        {
-                            set_vel.linear.x = 0;
-                            set_vel.linear.y = 0;
-                            set_vel.linear.z = 0;
-                            set_vel.angular.x = 0;
-                            set_vel.angular.y = 0;
-                            set_vel.angular.z = -motor_turn_speed;
-                        }
-                        action_pub.publish(set_vel);
-
-                    }
-                    else {
                         set_vel.linear.x = 0;
                         set_vel.linear.y = 0;
                         set_vel.linear.z = 0;
                         set_vel.angular.x = 0;
                         set_vel.angular.y = 0;
-                        set_vel.angular.z = 0;
-                        action_pub.publish(set_vel);
-                        driveFSM_state = FSM_DRIVESTATE_STRAIGHT;
-                        //cout<<"turn down"<<endl;
+                        set_vel.angular.z = motor_turn_speed;
                     }
-
-                }
-                else if (driveFSM_state == FSM_DRIVESTATE_STRAIGHT) {
-                    //cout<<"straight"<<endl;
-                    double distance = sqrt(pow(target_x - gnss_x, 2) + pow(target_y - gnss_y, 2));
-                    cout << "distance: " << distance << endl;
-                    double speed = distance2speed(distance);
-                    set_vel.linear.x = speed;
-                    set_vel.linear.y = 0;
-                    set_vel.linear.z = 0;
-                    set_vel.angular.x = 0;
-                    set_vel.angular.y = 0;
-                    set_vel.angular.z = 0;
-                    action_pub.publish(set_vel);
-                    straight_timer++;
-                    if (distance <= distance_threshold_x) {
-                        driveFSM_state = FSM_DRIVESTATE_FINAL;
-                    }
-
-                    else if (straight_timer >= straight_time) // 0.5Hz
+                    else
                     {
-                        //cout<<"straight down"<<endl;
-                        straight_timer = 0;
-                        // calculate GNSS angle
-                        gnss_angle = delta_xy_heading_angle(gnss_x - gnssAngle_x_old, gnss_y - gnssAngle_y_old);
-                        double diff = gnss_angle - imu_angle;
-                        if (diff > GNSSANGLE_TH_MIN && diff < GNSSANGLE_TH_MAX) {
-                            imu_delta = gnss_angle - imu_fake;
-                            if (imu_delta > 180) {
-                                imu_delta = imu_delta - 360;
-                            }
-                            else if (imu_delta < -180) {
-                                imu_delta = imu_delta + 360;
-                            }
-                        }
-
-
-
-                        gnssAngle_x_old = gnss_x;
-                        gnssAngle_y_old = gnss_y;
-                        // change FSM
-                        driveFSM_state = FSM_DRIVESTATE_TURN;
+                        set_vel.linear.x = 0;
+                        set_vel.linear.y = 0;
+                        set_vel.linear.z = 0;
+                        set_vel.angular.x = 0;
+                        set_vel.angular.y = 0;
+                        set_vel.angular.z = -motor_turn_speed;
                     }
+                    action_pub.publish(set_vel);
+
                 }
-                else if (driveFSM_state == FSM_DRIVESTATE_FINAL) {
+                else {
                     set_vel.linear.x = 0;
                     set_vel.linear.y = 0;
                     set_vel.linear.z = 0;
@@ -350,19 +295,74 @@ int main(int argc, char** argv) {
                     set_vel.angular.y = 0;
                     set_vel.angular.z = 0;
                     action_pub.publish(set_vel);
-                    if (print_counter < 10)
-                    {
-                        time_t nowtime;
-                        nowtime = time(NULL); //获取当前时间
-                        cout << nowtime << endl;
-                        cout << "time" << nowtime << ", " << "final_lat: " << std::setprecision(20) << gnss_lat << endl;
-                        cout << "time" << nowtime << ", " << "final_lon: " << std::setprecision(20) << gnss_lon << endl;
-                        //time
-                        print_counter++;
+                    driveFSM_state = FSM_DRIVESTATE_STRAIGHT;
+                    //cout<<"turn down"<<endl;
+                }
+
+            }
+            else if (driveFSM_state == FSM_DRIVESTATE_STRAIGHT) {
+                //cout<<"straight"<<endl;
+                double distance = sqrt(pow(target_x - gnss_x, 2) + pow(target_y - gnss_y, 2));
+                cout << "distance: " << distance << endl;
+                double speed = distance2speed(distance);
+                set_vel.linear.x = speed;
+                set_vel.linear.y = 0;
+                set_vel.linear.z = 0;
+                set_vel.angular.x = 0;
+                set_vel.angular.y = 0;
+                set_vel.angular.z = 0;
+                action_pub.publish(set_vel);
+                straight_timer++;
+                if (distance <= distance_threshold_x) {
+                    driveFSM_state = FSM_DRIVESTATE_FINAL;
+                }
+
+                else if (straight_timer >= straight_time) // 0.5Hz
+                {
+                    //cout<<"straight down"<<endl;
+                    straight_timer = 0;
+                    // calculate GNSS angle
+                    gnss_angle = delta_xy_heading_angle(gnss_x - gnssAngle_x_old, gnss_y - gnssAngle_y_old);
+                    double diff = gnss_angle - imu_angle;
+                    if (diff > GNSSANGLE_TH_MIN && diff < GNSSANGLE_TH_MAX) {
+                        imu_delta = gnss_angle - imu_fake;
+                        if (imu_delta > 180) {
+                            imu_delta = imu_delta - 360;
+                        }
+                        else if (imu_delta < -180) {
+                            imu_delta = imu_delta + 360;
+                        }
                     }
 
+
+
+                    gnssAngle_x_old = gnss_x;
+                    gnssAngle_y_old = gnss_y;
+                    // change FSM
+                    driveFSM_state = FSM_DRIVESTATE_TURN;
                 }
-            }   
+            }
+            else if (driveFSM_state == FSM_DRIVESTATE_FINAL) {
+                set_vel.linear.x = 0;
+                set_vel.linear.y = 0;
+                set_vel.linear.z = 0;
+                set_vel.angular.x = 0;
+                set_vel.angular.y = 0;
+                set_vel.angular.z = 0;
+                action_pub.publish(set_vel);
+                if (print_counter < 10)
+                {
+                    time_t nowtime;
+                    nowtime = time(NULL); //获取当前时间
+                    cout << nowtime << endl;
+                    cout << "time" << nowtime << ", " << "final_lat: " << std::setprecision(20) << gnss_lat << endl;
+                    cout << "time" << nowtime << ", " << "final_lon: " << std::setprecision(20) << gnss_lon << endl;
+                    //time
+                    print_counter++;
+                }
+
+            }
+        }
         gnss_isUpdate = false;
         ros::spinOnce();
         loop_rate.sleep();
