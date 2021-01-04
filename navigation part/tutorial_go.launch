@@ -1,0 +1,12 @@
+<launch>
+
+  <node pkg="tutorial_pkg" type="tutorial_pkg_node" name="tutorial_pkg_node" output="screen">
+  </node>
+
+  <node pkg="tutorial_pkg" type="gps_node" name="gps_node" output="screen">
+  </node>
+  
+  <node pkg="tutorial_pkg" type="sim_sensor_node" name="sim_sensor_node" output="screen">
+  </node> 
+
+</launch>
