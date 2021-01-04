@@ -46,8 +46,8 @@ const unsigned int motor_min_period = 10; // 10*0.02s
 
 // 参数
 double target_distance;
-double target_la[5] = {};
-double target_lo[5] = {};
+double target_la[2] = {62.39374,62.39405};
+double target_lo[2] = {17.28297,17.28310};
 double target_x;
 double target_y;
 double gnss_x;
@@ -276,17 +276,20 @@ int main(int argc, char** argv)
                 set_vel.angular.z = 0;
                 action_pub.publish(set_vel);
                
+                /*
                 if (send_start_collection_data = false)
                 {
                     //发送开始标志
 
                     send_start_collection_data = true;
                 }
-           
-                if (finish_collection_data = true)
-                {
-                    cout << "Finish collcetion" << endl;
-                    if (i < 5)
+                
+                */
+                
+                //if (finish_collection_data = true)
+                //{
+                //    cout << "Finish collcetion" << endl;
+                    if (i < 2)
                     {
                         i++;
                         driveFSM_state = FSM_DRIVESTATE_TURN;
@@ -302,7 +305,7 @@ int main(int argc, char** argv)
                         set_vel.angular.z = 0;
                         action_pub.publish(set_vel);
                     }
-                }
+                //}
 
                 
             }
