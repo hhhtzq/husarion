@@ -5,12 +5,14 @@
 #include <iostream>
 #include <termios.h>
 #include <std_msgs/Float64MultiArray.h>
+#include <std_msgs/Float32MultiArray.h>
 #include <std_msgs/UInt8.h>
 #include <geometry_msgs/Vector3.h>
 #include <cmath>
 #include <math.h>
 #include <geometry_msgs/Twist.h>
-
+#include <sensor_msgs/Image.h>
+#include <std_msgs/UInt8MultiArray.h>
 #include <fcntl.h>
 #include <time.h>
 
@@ -44,6 +46,7 @@ const unsigned int gui_update_period = 30; // 30*0.02s
 bool is_turn_correct = false; //自传到指定角度
 bool gnss_isUpdate = false; //判断gnss是否为最新数据
 bool is_update_angle = false; //用gnss计算角度的过程是否完成
+
 bool autoDrive_flag = false; //自动驾驶切换手动驾驶
 
 // navigation parameters
@@ -57,7 +60,6 @@ double gnss_y;
 double gnss_time;
 double gnss_lat;
 double gnss_lon;
-double gnss_PDOP;
 
 double gnssAngle_x_old =0;
 double gnssAngle_y_old =0;
@@ -77,7 +79,7 @@ const int FSM_DRIVESTATE_STRAIGHT = 1;
 const int FSM_DRIVESTATE_FINAL = 2;
 const int FSM_DRIVESTATE_GNSSNORTH = 3;
 
-int driveFSM_state = FSM_DRIVESTATE_TURN;
+int driveFSM_state = FSM_DRIVESTATE_GNSSNORTH;
 
 int straight_timer = 0;
 
@@ -98,8 +100,8 @@ double delta_xy_heading_angle (double delta_x,double delta_y){
 void angle_deg2desc_m(double lat,double lon,double* result)
 {
     
-    result[0] = (2*M_PI*6371e3*lon)*cos((lat/180)*M_PI)/360; //x
-    result[1] = 2*M_PI*6371e3*lat/360; //y
+    result[0] = lat * 111180; //x
+    result[1] = lon * 51600; //y
   
 }
 
@@ -120,9 +122,9 @@ double distance2speed(double distance)
 
 
 // imu callback function
-void suber_imuCallback(const geometry_msgs::Vector3 &imu_message){
+void suber_imuCallback(const std_msgs::Float32MultiArray &imu){
 
-    imu_fake = imu_message.z; //读imu绕Z轴的角度
+    imu_fake = imu.data[2]; //读imu绕Z轴的角度
     imu_angle = imu_fake+imu_delta; //calibration imu
     if(imu_angle > 180){
         imu_angle = imu_angle-360;
@@ -138,54 +140,11 @@ void suber_gnssCallback(const std_msgs::Float64MultiArray &gnss_message){
     gnss_time = gnss_message.data[0];
     gnss_lat = gnss_message.data[1];
     gnss_lon = gnss_message.data[2];
-    gnss_PDOP = gnss_message.data[3];
     double result [2]; // Declare variable space
     angle_deg2desc_m(gnss_lat,gnss_lon,result); //调用函数并分配值
     gnss_x = result[0];
     gnss_y = result[1];
     gnss_isUpdate = true; //执行前面的函数
-}
-//相应Google map上触摸目标点功能函数
-void suber_targetCallback(const std_msgs::Float64MultiArray &target_message){
-    // Allocate storage space
-    //double target_la = target_message.data[0];
-    //double target_lo = target_message.data[1];
-    //62.395534730497495,17.283029115710757
-
-    double target_la = 62.395534730497495;
-    double target_lo = 17.283029115710757;
-    double result[2];
-    angle_deg2desc_m(target_la,target_lo,result); //调用函数并负值
-    target_x = result[0];
-    target_y = result[1];
-    
-    driveFSM_state = FSM_DRIVESTATE_TURN;
-    print_counter=0;
-}
-const int KEYSTATE_AUTODRIVE = 0;
-const int KEYSTATE_MANUALDRIVE = 1;
-const int KEYSTATE_HEADNORTH = 2;
-const int KEYSTATE_GNSSNORTH = 3;
-// 自动驾驶模式回调函数
-void suber_functionKey_Callback(const std_msgs::UInt8 &message){
-    int state =message.data;
-    if (state == KEYSTATE_AUTODRIVE){
-        autoDrive_flag = true;
-    }else if(state == KEYSTATE_MANUALDRIVE){
-        autoDrive_flag = false;
-    }
-    else if (state == KEYSTATE_HEADNORTH){
-        imu_delta = 90 - imu_fake;
-        if(imu_delta > 180){
-          imu_delta = imu_delta-360;
-        }
-        else if (imu_delta < -180){
-          imu_delta = imu_delta+360;
-        }
-    }
-    else if (state == KEYSTATE_GNSSNORTH){
-           driveFSM_state = FSM_DRIVESTATE_GNSSNORTH;
-       }
 }
 
 
@@ -197,17 +156,19 @@ int main(int argc, char **argv) {
     ros::NodeHandle n("~"); //get handle
     ros::Rate loop_rate(50); //Define rate for repeatable operations 最原始的频率
     //create IMU subscriber
-    ros::Subscriber suber_imu = n.subscribe("/rpy",10,suber_imuCallback);
+    ros::Subscriber suber_imu = n.subscribe("/IMU",10,suber_imuCallback);
     //create gnss subscriber
     ros::Subscriber suber_gnss = n.subscribe("/gnss_node/gnss_data",10,suber_gnssCallback);
-    //create mqtt subscriber
-    ros::Subscriber suber_target_location = n.subscribe("/mqtt_node/targetLocation",10,suber_targetCallback);
     //create wheels publisher
     action_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
-    //create switch manual/auto drive function subscriber
-    ros::Subscriber suber_functionKey = n.subscribe("/func_key",10,suber_functionKey_Callback);
-    //create GUI publisher
-    ros::Publisher guiInfo_pub =  n.advertise<std_msgs::Float64MultiArray>("/guiInfo", 1);
+
+	double target_la = 62.395534730497495;
+	double target_lo = 17.283029115710757;
+	double result[2];
+	angle_deg2desc_m(target_la,target_lo,result); //调用函数并负值
+	target_x = result[0];
+	target_y = result[1];
+
 
   
     while (ros::ok())
@@ -270,6 +231,7 @@ int main(int argc, char **argv) {
                     else if (imu_delta < -180){
                         imu_delta = imu_delta+360;
                         }
+				   autoDrive_flag = true;
                    driveFSM_state = FSM_DRIVESTATE_TURN;
                 }
 
@@ -287,7 +249,9 @@ int main(int argc, char **argv) {
                     // DRIVE FSM
                     if(driveFSM_state == FSM_DRIVESTATE_TURN){
                         
-                        double aim_angle =(atan2(target_y-gnss_y,target_x-gnss_x)*180)/M_PI;
+                        
+						
+						double aim_angle =(atan2(target_y-gnss_y,target_x-gnss_x)*180)/M_PI;
                         double diff_angle = aim_angle-imu_angle;
                         if(diff_angle > 180){
                             diff_angle = diff_angle-360;
@@ -364,9 +328,6 @@ int main(int argc, char **argv) {
                                     imu_delta = imu_delta+360;
                                 }
                             }
-                            
-                            
-                           
                             gnssAngle_x_old = gnss_x;
                             gnssAngle_y_old = gnss_y;
                             // change FSM
@@ -402,30 +363,6 @@ int main(int argc, char **argv) {
                 }
         }
         // out of auto drive
-        
-        // mqtt部分，更新给google map
-        if (counter % gui_update_period ==0)
-        {
-            double rtk_lat = 62.393461;
-            double rtk_lon = 17.282735;
-            double target_lat = 62.395443360781094;
-            double target_lon = 17.283164798229816;
-            double body_angle = imu_angle;
-           // cout<<"body_angle"<<body_angle<<endl;
-            double state = 0;
-            std_msgs::Float64MultiArray guiInfo;
-            guiInfo.data.push_back(gnss_lat);
-            guiInfo.data.push_back(gnss_lon);
-            //guiInfo.data.push_back(62.395443360781094);
-            //guiInfo.data.push_back(17.283164798229816);
-            guiInfo.data.push_back(target_lat);
-            guiInfo.data.push_back(target_lon);
-            guiInfo.data.push_back(body_angle);
-            guiInfo.data.push_back(rtk_lat);
-            guiInfo.data.push_back(rtk_lon);
-            guiInfo.data.push_back(state);
-            guiInfo_pub.publish(guiInfo);
-        }
         gnss_isUpdate = false;
         ros::spinOnce();
         loop_rate.sleep();
