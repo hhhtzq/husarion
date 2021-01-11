@@ -4,6 +4,8 @@
 #include <iostream>
 #include <termios.h>
 #include <std_msgs/Float64MultiArray.h>
+#include <std_msgs/Float32MultiArray.h>
+#include "std_msgs/UInt8MultiArray.h"
 #include <std_msgs/UInt8.h>
 #include <geometry_msgs/Vector3.h>
 #include <cmath>
@@ -12,7 +14,7 @@
 #include <sensor_msgs/Imu.h>
 #include <fcntl.h>
 #include <time.h>
-
+#include <sensor_msgs/Image.h>
 #include <std_msgs/Bool.h>
 
 using namespace std;
@@ -23,35 +25,29 @@ ros::Publisher action_pub;
 
 
 
-
-
 // 车辆设置
 const double turn_threshold = 3; // 转向阈值 小于此值时停止转向
 const double motor_turn_speed = 0.7; //转向转速
-const double distance_threshold_x = 0.2; // 20cm
+const double distance_threshold_x = 0.5; // 20cm
 
 const double GNSSANGLE_TH_MIN = 3; //角度误差
 const double GNSSANGLE_TH_MAX = 6;
 
 const int straight_time = 5; // 5Hz/5 = 1Hz = 1S  车辆直行时间
 
-// 标志
-bool is_turn_correct = false; //自传到指定角度
-bool gnss_isUpdate = false; //判断gnss是否为最新数据
-bool start_collection_data = false; // 判断是否开始收集数据
-bool finish_collection_data = false; // 判断是否开始收集数据
-
 // 分频 控制时间
 const unsigned int motor_min_period = 10; // 10*0.02s
 
+bool gnss_update = false;
+
 // 参数
 double target_distance;
-double target_la[2] = {62.39374,62.39405};
-double target_lo[2] = {17.28297,17.28310};
 double target_x;
 double target_y;
 double gnss_x;
 double gnss_y;
+double checker = 0;
+
 
 // row gnss data
 double gnss_time;
@@ -76,7 +72,8 @@ int driveFSM_state = FSM_DRIVESTATE_CALIBRATE;  //初始为转向模式
 int straight_timer = 0;
 
 // 计算角度
-double delta_xy_heading_angle(double delta_x, double delta_y) 
+/*
+double delta_xy_heading_angle(double delta_y, double delta_x)
 {
 
     double rad = atan2(delta_y, delta_x); //用arctan求出弧度
@@ -84,46 +81,61 @@ double delta_xy_heading_angle(double delta_x, double delta_y)
     return degree;
 
 }
+*/
+
 
 // 经纬度转换为距离
 void angle_deg2desc_m(double lat, double lon, double* result)
 {
-    result[0] = lat * 111180;
-    result[1] = lon * 51600; 
-}
-
-// 记录当前位置，与目标点的距离和角度
-void odom(double lon_start, double lat_start, double lon_stop, double lat_stop, double distance, double position_angle)//calculate the distance and degree
-{
-    double x1;
-    double y1;
-    double x2;
-    double y2;
-
-    x1 = lat_start;
-    y1 = lon_start;
-    x2 = lat_stop;
-    y2 = lon_stop;
-
-    distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-
-    position_angle = delta_xy_heading_angle(x2 - x1, y2 - y1);
-    
+    result[0] = lon * 51600;
+    result[1] = lat * 111180; 
 }
 
 
 // 发送采集数据标志
+/*
 void SamplingStart_send()
 {
     std_msgs::Bool start;
     start.data = true;
     samplingstart_pub.publish(start);
 }
+*/
+
+void imu_calibrate_Init() //init the IMU
+{
+    ros::Rate loop_rate(50);
+    for (int i = 0; i < 100; i++) //wait 2s
+    {
+        loop_rate.sleep();
+    }
+
+    imu_calibrate = imu_read;
+    printf("imu_calibrate:%f\n", imu_calibrate);
+
+    set_vel.linear.x = 0;
+    set_vel.linear.y = 0;
+    set_vel.linear.z = 0;
+    set_vel.angular.x = 0;
+    set_vel.angular.y = 0;
+    set_vel.angular.z = 0;
+    action_pub.publish(set_vel);
+
+
+    for (int i = 0; i < 50; i++) 
+    {
+        loop_rate.sleep();
+    }
+    for (int i = 0; i < 100; i++)
+    {
+        loop_rate.sleep();
+    }
+}
 
 //IMU callback
-void suber_imuCallback(const sensor_msgs::Imu::ConstPtr& msg)
+void suber_imuCallback(const std_msgs::Float32MultiArray &imu)
 {
-    imu_read = msg->orientation.z;
+    imu_read = imu->data[2];
 }
 
 double IMU_calibrate(double imu_input) // IMU校准
@@ -147,6 +159,11 @@ void suber_gnssCallback(const std_msgs::Float64MultiArray& gnss_message)
     angle_deg2desc_m(gnss_lat, gnss_lon, result); //调用函数并分配值
     gnss_x = result[0];
     gnss_y = result[1];
+    if (gnss_x != 0);
+    {
+        gnss_update = true;
+        checker++;
+    }
     //gnss_isUpdate = true; //执行前面的函数
 }
 
@@ -164,31 +181,47 @@ int main(int argc, char** argv)
     action_pub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
 
     // 用指南针手动让车头向东，读取imu当前值并记为校准值
-    imu_calibrate = imu_read;
-    
+
+    for (int i = 0; i < 50; i++)
+    {
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+    imu_calibrate_Init();
+    for (int i = 0; i < 50; i++)
+    {
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
+
     while (ros::ok())
     {
         static unsigned int counter = 0;
         counter++;
 
-        int i = 0;
+        static unsigned int i = 0;
+        double target_la = ;
+        double target_lo = ;
         double traget_result[2];
-        angle_deg2desc_m(target_la[i], target_lo[i], traget_result);
+        angle_deg2desc_m(target_la, target_lo, traget_result);
         target_x = traget_result[0];
         target_y = traget_result[1];
 
         if (driveFSM_state == FSM_DRIVESTATE_CALIBRATE)
         {
-            odom(gnss_x, gnss_y, target_x, target_y, target_distance, target_angle);
-            IMU_calibrate(imu_read);
+            if (gnss_update == true && checker == 10)
+            {
+                target_angle = (atan2(target_y - gnss_y, target_x - gnss_x) * 180) / M_PI;
+                target_distance = sqrt(pow(target_x - gnss_x, 2) + pow(target_y - gnss_y, 2));
+                IMU_calibrate(imu_read);
+                printf("Target_location:%f,%f\n", target_x, target_y);
+                printf("Car_location:%f,%f\n", gnss_x, gnss_y);
+                printf("Target_distance:%f\n", target_distance);
+                printf("Target_angle:%f\n", target_angle);
+                printf("Car_angle:%f\n", IMU_calibrate(imu_read));  // should be 0;
 
-            cout << "Car_location:" << gnss_x << "\t\t" << gnss_y << endl;
-            cout << "Distance:" << target_distance << endl;
-            cout << "Target_angle" << target_angle << endl;
-            cout << "Car_angle" << after_calibrate << endl;
-            
-            driveFSM_state = FSM_DRIVESTATE_TURN;
-
+                driveFSM_state = FSM_DRIVESTATE_TURN;
+            }
         }
 
         if (counter % motor_min_period == 0) // 5Hz
@@ -242,7 +275,7 @@ int main(int argc, char** argv)
             {
                 cout << "Straight mode" << endl;
 
-                set_vel.linear.x = 0.5;
+                set_vel.linear.x = 0.4;
                 set_vel.linear.y = 0;
                 set_vel.linear.z = 0;
                 set_vel.angular.x = 0;
@@ -257,10 +290,11 @@ int main(int argc, char** argv)
                     driveFSM_state = FSM_DRIVESTATE_COLLECTION;
                 }
 
-                else if (straight_timer >= straight_time) //直行时间大于 2s
+                else if (straight_timer >= straight_time) //直行时间大于 1s
                 {
                     straight_timer = 0;
-                    odom(gnss_x, gnss_y, target_x, target_y, target_distance, target_angle);
+                    target_angle = (atan2(target_y - gnss_y, target_x - gnss_x) * 180) / M_PI; //重新计算与目标点的夹角
+                    target_distance = sqrt(pow(target_x - gnss_x, 2) + pow(target_y - gnss_y, 2)); //重新计算与目标点的距离
                     driveFSM_state = FSM_DRIVESTATE_TURN; //
                 }
             }
@@ -275,43 +309,8 @@ int main(int argc, char** argv)
                 set_vel.angular.y = 0;
                 set_vel.angular.z = 0;
                 action_pub.publish(set_vel);
-               
-                /*
-                if (send_start_collection_data = false)
-                {
-                    //发送开始标志
-
-                    send_start_collection_data = true;
-                }
-                
-                */
-                
-                //if (finish_collection_data = true)
-                //{
-                //    cout << "Finish collcetion" << endl;
-                    if (i < 2)
-                    {
-                        i++;
-                        driveFSM_state = FSM_DRIVESTATE_TURN;
-                    }
-
-                    else
-                    {
-                        set_vel.linear.x = 0;
-                        set_vel.linear.y = 0;
-                        set_vel.linear.z = 0;
-                        set_vel.angular.x = 0;
-                        set_vel.angular.y = 0;
-                        set_vel.angular.z = 0;
-                        action_pub.publish(set_vel);
-                    }
-                //}
-
-                
             }
         }
-
-        //gnss_isUpdate = false;
         ros::spinOnce();
         loop_rate.sleep();
     }
