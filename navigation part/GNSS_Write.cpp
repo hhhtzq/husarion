@@ -105,12 +105,15 @@ int main(int argc, char** argv)
     inet_aton("108.61.171.128", &(servadd.sin_addr));
     servadd.sin_port = htons(29000); 
     servadd.sin_family = AF_INET; // AF_INET（TCP/IP – IPv4）
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM, 0); // Create socket “sockfd”
 
-    if (connect(sockfd, (struct sockaddr*)&servadd, sizeof(servadd)) != 0)
+    if (connect(sockfd, (struct sockaddr*)&servadd, sizeof(servadd)) != 0) 
+       // Make a connection request to the server
     {
         cout << "Connected" << endl;
     }
+    
+    recv_len = recv(sockfd, recv_buf, 100, 0); // Receive data
 
     while (ros::ok()) //Check if ROS is working
     {
